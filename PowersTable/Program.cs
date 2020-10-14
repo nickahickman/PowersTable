@@ -10,18 +10,9 @@ namespace PowersTable
 
             while (true)
             {
-                string userNumberString = "";
                 int userNumber;
 
-                Console.WriteLine("How many numbers should we practice?");
-                userNumberString = Console.ReadLine();
-
-                while (!IsValidInteger(userNumberString)) 
-                {
-                    userNumberString = GetUserResponse("Sorry, that's not a valid integer. How many numbers should we practice?");
-                }
-
-                userNumber = int.Parse(userNumberString);
+                userNumber = GetUserInteger();
 
                 BuildPowersTable(userNumber);
 
@@ -31,6 +22,22 @@ namespace PowersTable
                     break;
                 }
             }
+        }
+        public static int GetUserInteger()
+        {
+            string userNumberString = "";
+            int userInt;
+
+            Console.WriteLine("How many numbers should we practice?");
+            userNumberString = Console.ReadLine();
+
+            while (!IsValidInteger(userNumberString))
+            {
+                userNumberString = GetUserResponse("Sorry, that's not a valid integer. How many numbers should we practice?");
+            }
+
+            userInt = int.Parse(userNumberString);
+            return userInt;
         }
         public static bool IsValidInteger(string numAsString)
         {
